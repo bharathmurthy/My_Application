@@ -31,6 +31,7 @@
         android:id="@+id/nextFactButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/white" />
+        android:background="@android:color/white"
+        android:textColor="@android:color/holo_blue_bright"/>
 
 </RelativeLayout>

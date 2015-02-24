@@ -33,14 +33,15 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 factLabel.setText(FactBook.getFact());
-                relative.setBackgroundColor(Color.rgb(generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
+                int red = generator.nextInt(255);
+                int green = generator.nextInt(255);
+                int blue = generator.nextInt(255);
+                relative.setBackgroundColor(Color.rgb(red,green,blue));
+                nextFact.setTextColor(Color.rgb(red,green,blue));
 
             }
         };
 
         nextFact.setOnClickListener(listener);
-        String message = "Yay! our activity was created";
-        Toast toast = Toast.makeText(this,message,Toast.LENGTH_LONG);
-        toast.show();
     }
 }
