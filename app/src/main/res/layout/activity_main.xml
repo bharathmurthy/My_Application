@@ -10,7 +10,8 @@
     <TextView android:text="@string/did_you" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:textColor="#80ffffff" />
+        android:textColor="#80ffffff"
+        />
 
     <TextView
         android:layout_width="wrap_content"

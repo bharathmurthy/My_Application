@@ -9,8 +9,9 @@
 
     <TextView android:text="@string/did_you" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="#80ffffff" />
+        android:textSize="32sp"
+        android:textColor="#80ffffff"
+        android:id="@+id/did_you_know"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,7 +21,7 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="24sp"
+        android:textSize="33sp"
         android:textColorHighlight="@android:color/white"
         android:textColor="@android:color/white" />
 
@@ -31,6 +32,9 @@
         android:id="@+id/nextFactButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/white" />
+        android:background="@drawable/shape"
+        android:textColor="@android:color/holo_blue_bright"
+        />
+
 
 </RelativeLayout>
