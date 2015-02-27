@@ -1,27 +1,26 @@
-package com.example.kumar.myapplication;
+package com.IndianTech.kumar.myapplication;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.Random;
-
-import static android.graphics.Color.RED;
 
 
 public class MainActivity extends ActionBarActivity {
     Random generator = new Random();
+    Context mContext=MainActivity.this;
+    SharedPreferences appPreferences;
+    boolean isAppInstalled = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +56,24 @@ public class MainActivity extends ActionBarActivity {
                 nextFact.setTextColor(Color.rgb(red,green,blue));
             }
         };
-
         nextFact.setOnClickListener(listener);
+        appPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        isAppInstalled = appPreferences.getBoolean("isAppInstalled",false);
+        if(isAppInstalled==false) {
+            Intent shortcutIntent = new Intent(getApplicationContext(),
+                    MainActivity.class);
+            shortcutIntent.setAction(Intent.ACTION_MAIN);
+            Intent addIntent = new Intent();
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "FunFacts!");
+            addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+                    Intent.ShortcutIconResource.fromContext(getApplicationContext(),
+                            R.drawable.ic_launcher));
+            addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+            getApplicationContext().sendBroadcast(addIntent);
+        }
+        SharedPreferences.Editor editor = appPreferences.edit();
+        editor.putBoolean("isAppInstalled", true);
+        editor.commit();
     }
 }

@@ -13,6 +13,10 @@ ADDED from AndroidManifest.xml:2:1
 	android:versionCode
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
+uses-permission#com.android.launcher.permission.INSTALL_SHORTCUT
+ADDED from AndroidManifest.xml:4:1
+	android:name
+		ADDED from AndroidManifest.xml:4:18
 application
 ADDED from AndroidManifest.xml:5:5
 MERGED from com.android.support:appcompat-v7:21.0.3:16:5
@@ -25,7 +29,7 @@ MERGED from com.android.support:support-v4:21.0.3:16:5
 		ADDED from AndroidManifest.xml:7:9
 	android:theme
 		ADDED from AndroidManifest.xml:9:9
-activity#com.example.kumar.myapplication.MainActivity
+activity#com.IndianTech.kumar.myapplication.MainActivity
 ADDED from AndroidManifest.xml:10:9
 	android:label
 		ADDED from AndroidManifest.xml:12:13

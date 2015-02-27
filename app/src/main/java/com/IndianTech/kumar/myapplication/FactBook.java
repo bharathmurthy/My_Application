@@ -1,4 +1,4 @@
-package com.example.kumar.myapplication;
+package com.IndianTech.kumar.myapplication;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -7,7 +7,6 @@ import java.util.Random;
  * Created by kumar on 2/14/2015.
  */
 public class FactBook {
- //   private static ArrayList<Integer> indexUsed = new ArrayList<Integer>();
     public static String getFact(){
         ArrayList<String> facts = new ArrayList<String>();
         facts.add("Ostriches can run faster than horses...");
@@ -126,14 +125,6 @@ public class FactBook {
         facts. add("You can’t kill yourself by holding your breath. ");
 
         Random generator = new Random();
-//        while (indexUsed.contains(random))
- //       {
- //           random = generator.nextInt(facts.size());
-  //      }
-   //     if(!indexUsed.contains(random))
-    //        indexUsed.add(random);
- //       if(indexUsed.size()==facts.size()-1)
-  //          indexUsed = new ArrayList<Integer>();
         return facts.get(generator.nextInt(facts.size()));
 
     }
