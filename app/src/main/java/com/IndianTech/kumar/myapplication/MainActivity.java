@@ -6,15 +6,17 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import java.util.Random;
-
+//.addTestDevice(Settings.Secure.getString(this.getContentResolver(),Settings.Secure.ANDROID_ID))
 
 public class MainActivity extends ActionBarActivity {
     Random generator = new Random();
@@ -25,6 +27,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+
         TextView didYouKnow = (TextView) findViewById(R.id.did_you_know);
         Typeface tf = Typeface.createFromAsset(getAssets(),"fonts/ITCBLKAD.TTF");
         Typeface tf1 = Typeface.createFromAsset(getAssets(),"fonts/PRISTINA.TTF");
@@ -57,23 +61,25 @@ public class MainActivity extends ActionBarActivity {
             }
         };
         nextFact.setOnClickListener(listener);
-        appPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        isAppInstalled = appPreferences.getBoolean("isAppInstalled",false);
-        if(isAppInstalled==false) {
-            Intent shortcutIntent = new Intent(getApplicationContext(),
-                    MainActivity.class);
-            shortcutIntent.setAction(Intent.ACTION_MAIN);
-            Intent addIntent = new Intent();
-            addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
-            addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "FunFacts!");
-            addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
-                    Intent.ShortcutIconResource.fromContext(getApplicationContext(),
-                            R.drawable.ic_launcher));
-            addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-            getApplicationContext().sendBroadcast(addIntent);
-        }
-        SharedPreferences.Editor editor = appPreferences.edit();
-        editor.putBoolean("isAppInstalled", true);
-        editor.commit();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+     //   appPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+    //    isAppInstalled = appPreferences.getBoolean("isAppInstalled",false);
+      //  if(isAppInstalled==false) {
+     //       Intent shortcutIntent = new Intent(getApplicationContext(),
+      //              MainActivity.class);
+       //     shortcutIntent.setAction(Intent.ACTION_MAIN);
+      //      Intent addIntent = new Intent();
+       //     addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+      //      addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "FunFacts!");
+      //      addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE,
+       //             Intent.ShortcutIconResource.fromContext(getApplicationContext(),
+       //                     R.drawable.ic_launcher));
+      //      addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+       //     getApplicationContext().sendBroadcast(addIntent);
+       // }
+       // SharedPreferences.Editor editor = appPreferences.edit();
+       // editor.putBoolean("isAppInstalled", true);
+       // editor.commit();
     }
 }
